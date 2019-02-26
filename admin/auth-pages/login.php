@@ -1,7 +1,11 @@
 <?php 
 include_once('../../api/config/database.php');
 include_once('../../functions.php');
-checkLogin(true);
+$url = "http://" . $_SERVER['SERVER_NAME'].'/arbites-status/admin/' ;
+$isLogin = checkLogin();
+if($isLogin){
+    header("Location:".$url);
+}
 $database = new Database();
 $db = $database->getConnection();
 if(isset($_POST['login'])){
@@ -12,7 +16,7 @@ if(isset($_POST['login'])){
         $statement = $db->prepare($check_user);
         $statement->execute();
         $data = $statement->fetchall(PDO::FETCH_ASSOC);
-        echo $url = "http://" . $_SERVER['SERVER_NAME'].'/arbites-status/admin/' ; 
+         
         if(count($data) > 0){
             $_SESSION['email'] = $u_email;
             // echo "hello2";
