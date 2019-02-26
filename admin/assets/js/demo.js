@@ -242,22 +242,23 @@ demo = {
         marker.setMap(map);
     },
 
-	showNotification: function(from, align){
+	showNotification: function(from, align ,typeBy = null,msg = ""){
     	color = Math.floor((Math.random() * 4) + 1);
 
     	$.notify({
-        	icon: "pe-7s-gift",
-        	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+        	// icon: "pe-7s-gift",
+        	message: msg
 
         },{
-            type: type[color],
+          type: typeBy ? typeBy: type[color],
             timer: 4000,
             placement: {
                 from: from,
                 align: align
             }
         });
-	}
+  },
+
 
 
 }
